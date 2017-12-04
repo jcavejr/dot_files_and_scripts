@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+ssh jtc178@clamshell.rutgers.edu
