@@ -3,13 +3,16 @@
 ##################
 # Find installer #
 ##################
+echo "CHECKING WHICH PACKAGE MANAGER TO USE..."
 command -v pacman >/dev/null 2>&1 && INSTALL="sudo pacman -S --noconfirm"
 command -v apt >/dev/null 2>&1 && INSTALL="sudo apt -y install"
 command -v zypper >/dev/null 2>&1 && INSTALL="sudo zypper in -y"
+echo "FOUND INSTALL COMMAND IS: $INSTALL"
 
 ###############################
 # Check for required programs #
 ###############################
+echo "CHECKING FOR AND INSTALLING REQUIRED PROGRAMS..."
 command -v git >/dev/null 2>&1 || $INSTALL git 2>/dev/null
 command -v vim >/dev/null 2>&1 || $INSTALL vim 2>/dev/null
 command -v ssh >/dev/null 2>&1 || $INSTALL openssh-client 2>/dev/null
@@ -24,6 +27,7 @@ command -v keepass >/dev/null 2>&1 || $INSTALL keepass 2>/dev/null
 # Setup SSH Key #
 #################
 if [ ! -f ~/.ssh/id_rsa.pub ]; then #checks if ssh key already exists before creating
+    echo "SETTING UP SSH KEY..."
     ssh-keygen -t rsa
     cat ~/.ssh/id_rsa.pub | ssh jtc178@clamshell.rutgers.edu 'cat >> .ssh/authorized_keys'
     echo "Add the following to github"
@@ -36,8 +40,19 @@ fi
 #################### can possibly write this way more efficiently with loops and python..
 # Setup school dir #
 ####################
+echo "SETTING UP SCHOOL DIRECTORY..."
 if [ ! -d ~/school ]; then
     mkdir ~/school
+fi
+if [ ! -d ~/school/acm ]; then
+    mkdir ~/school/acm
+fi
+if [ ! -d ~/school/princeton ]; then
+    mkdir ~/school/princeton
+fi
+if [ ! -d ~/school/princeton/introcs ]; then
+    mkdir ~/school/princeton/introcs
+    git clone git@github.com:jcavejr/cos126.git ~/school/princeton/cos126
 fi
 if [ ! -d ~/school/spring18 ]; then
     mkdir ~/school/spring18
@@ -82,6 +97,7 @@ fi
 ###################
 # Clone git repos #
 ###################
+echo "SETTING UP ~/repos..."
 cd ~/repos
 if [ ! -d ~/repos/ramaswami_research ]; then
     git clone git@github.com:jcavejr/ramaswami_research.git
@@ -111,7 +127,9 @@ fi
 ##################
 # Setup programs #
 ##################
+echo "SETTING UP ~/bin..."
 if [ ! -d ~/bin ]; then
     mkdir ~/bin
 fi
 cp ~/repos/dot_files_and_scripts/bin/* ~/bin
+echo "DONE."
