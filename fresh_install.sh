@@ -22,6 +22,10 @@ command -v opencad >/dev/null 2>&1 || $INSTALL opencad 2>/dev/null
 command -v blender >/dev/null 2>&1 || $INSTALL blender 2>/dev/null
 command -v gimp >/dev/null 2>&1 || $INSTALL gimp 2>/dev/null
 command -v keepass >/dev/null 2>&1 || $INSTALL keepass 2>/dev/null
+command -v hp-setup >/dev/null 2>&1 || $INSTALL hplip 2>/dev/null
+command -v okular >/dev/null 2>&1 || $INSTALL okular 2>/dev/null
+command -v thunderbird >/dev/null 2>&1 || $INSTALL thunderbird 2>/dev/null
+command -v chromium >/dev/null 2>&1 || $INSTALL chromium 2>/dev/null
 
 #################
 # Setup SSH Key #
