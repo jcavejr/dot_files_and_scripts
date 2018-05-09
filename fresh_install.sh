@@ -3,28 +3,31 @@
 ##################
 # Find installer #
 ##################
-INSTALL=apt install
-command -v apt >/dev/null 2>&1 || INSTALL="pacman -Su"
-echo $INSTALL
+#INSTALL=apt install
+#command -v apt >/dev/null 2>&1 || INSTALL="pacman -Su"
+#echo $INSTALL
+INSTALL="sudo pacman -Su"
 
 ###############################
 # Check for required programs #
 ###############################
-command -v git >/dev/null 2>&1 || sudo $INSTALL git
-command -v vim >/dev/null 2>&1 || sudo $INSTALL vim
-command -v ssh >/dev/null 2>&1 || sudo $INSTALL openssh-client
-command -v gcc >/dev/null 2>&1 || sudo $INSTALL gcc
+#command -v git >/dev/null 2>&1 || sudo $INSTALL git
+#command -v vim >/dev/null 2>&1 || sudo $INSTALL vim
+#command -v ssh >/dev/null 2>&1 || sudo $INSTALL openssh-client
+#command -v gcc >/dev/null 2>&1 || sudo $INSTALL gcc
 
 #################
 # Setup SSH Key #
 #################
-ssh-keygen -t rsa
-cat ~/.ssh/id_rsa.pub | ssh jtc178@clamshell.rutgers.edu 'cat >> .ssh/authorized_keys'
-echo "Add the following to github"
-echo "---------------------------"
-cat ~/.ssh/id_rsa.pub
-echo "---------------------------"
-read -p "Press [enter] to continue..."
+if [ ! -f ~/.ssh/id_rsa.pub ]; then
+    ssh-keygen -t rsa
+    cat ~/.ssh/id_rsa.pub | ssh jtc178@clamshell.rutgers.edu 'cat >> .ssh/authorized_keys'
+    echo "Add the following to github"
+    echo "---------------------------"
+    cat ~/.ssh/id_rsa.pub
+    echo "---------------------------"
+    read -p "Press [enter] to continue..."
+fi
 
 ####################
 # Setup school dir #
@@ -65,7 +68,7 @@ git clone https://github.com/iridakos/goto.git
 ##################
 mkdir ~/bin
 cp ~/repos/dot_files_and_scripts/bin/* ~/bin/*
-sudo $INSTALL deluge
-sudo $INSTALL gimp
-sudo $INSTALL blender
-sudo $INSTALL opencad
+$INSTALL deluge
+$INSTALL gimp
+$INSTALL blender
+$INSTALL opencad
