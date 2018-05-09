@@ -68,7 +68,4 @@ git clone https://github.com/iridakos/goto.git
 ##################
 mkdir ~/bin
 cp ~/repos/dot_files_and_scripts/bin/* ~/bin/*
-$INSTALL deluge
-$INSTALL gimp
-$INSTALL blender
-$INSTALL opencad
+$INSTALL deluge gimp blender
