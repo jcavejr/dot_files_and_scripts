@@ -1,0 +1,4 @@
+linux headers (kernel-devel on opensuse, linux-headers on arch)
+openjdk (lots of packages required, make sure to get src and doc files for openjdk 8)
+geomview
+triangle
