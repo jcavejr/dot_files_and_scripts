@@ -1,6 +1,11 @@
 set tabstop=4
 set expandtab
 set number
+set background=dark
+set cursorline
+set wildmenu
+set incsearch
+set hlsearch
 set clipboard=unnamed
 syntax on
 let g:netrw_lifestyle = 3
