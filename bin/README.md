@@ -10,3 +10,6 @@ SSH's into clamshell. Let's me not have to type out entire ssh string everytime 
 
 pubip:
 Prints my public IP address. Useful for checking if my VPN is working properly without having to open up a web browser.
+
+makemywall:
+Converts an image from linux.pictures to a 1920x1080 wallpaper with the command `makemywall -s 1920 1080 path/to/file.png`.
