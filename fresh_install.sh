@@ -136,4 +136,8 @@ if [ ! -d ~/bin ]; then
     mkdir ~/bin
 fi
 cp ~/repos/dot_files_and_scripts/bin/* ~/bin
+
+echo "Copying dot files..."
+cp ~/repos/dot_files_and_scripts/dot_files/.vimrc ~/.vimrc
+cat ~/repos/dot_files_and_scripts/dot_files/.bashrc >> ~/.bashrc
 echo "DONE."
